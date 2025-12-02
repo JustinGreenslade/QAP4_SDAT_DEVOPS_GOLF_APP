@@ -30,21 +30,23 @@ public class MemberController {
     public ResponseEntity<List<Member>> searchMembers(
             @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "phone", required = false) String phone,
-            @RequestParam(value = "startDate", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate) {
+            @RequestParam(value = "membershipType", required = false) String membershipType,
+            @RequestParam(value = "tournamentStartDate", required = false)
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate tournamentStartDate) {
 
         if (name != null && !name.isEmpty()) {
-            List<Member> found = memberService.findByName(name);
-            return found.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(found);
+            return ResponseEntity.ok(memberService.findByName(name));
         }
         if (phone != null && !phone.isEmpty()) {
-            List<Member> found = memberService.findByPhoneNumber(phone);
-            return found.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(found);
+            return ResponseEntity.ok(memberService.findByPhoneNumber(phone));
         }
-        if (startDate != null) {
-            List<Member> found = memberService.findByMembershipStartDate(startDate);
-            return found.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(found);
+        if (membershipType != null && !membershipType.isEmpty()) {
+            return ResponseEntity.ok(memberService.findByMembershipType(membershipType));
         }
-        return ResponseEntity.badRequest().build();
+        if (tournamentStartDate != null) {
+            return ResponseEntity.ok(memberService.findByTournamentStartDate(tournamentStartDate));
+        }
+        return ResponseEntity.ok(memberService.getAllMembers());
     }
 
     @PostMapping
