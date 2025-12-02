@@ -29,11 +29,15 @@ public class MemberService {
         return memberRepository.findByPhoneNumberContaining(phone);
     }
 
-    public List<Member> findByMembershipStartDate(LocalDate date) {
-        return memberRepository.findByMembershipStartDate(date);
-    }
-
     public Member createMember(Member member) {
         return memberRepository.save(member);
+    }
+
+    public List<Member> findByMembershipType(String membershipType) {
+        return memberRepository.findByMembershipType(membershipType);
+    }
+
+    public List<Member> findByTournamentStartDate(LocalDate startDate) {
+        return memberRepository.findByTournamentStartDate(startDate);
     }
 }

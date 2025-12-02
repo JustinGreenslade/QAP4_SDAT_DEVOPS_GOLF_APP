@@ -1,0 +1,14 @@
+services:
+  myapp-main: #- this is the container we wanna run as a service
+    # the img has my username/ the img name / as well the tag latest which is for dev use
+    image: thelostmrj/golftouranmentapp:latest
+    ports:
+      - 8080:8080 # maps from my local 8080 to the containers port 8080
+    environment:
+      #- spring.datasource.url=jdbc:mysql://database-1.cjys2muqsiar.us-east-1.rds.amazonaws.com/deploying2025
+      #- spring.datasource.url=jdbc:mysql://s4-fall-2022.ce2vcezehro2.us-east-1.rds.amazonaws.com/fall_2022
+      - spring.datasource.url=jdbc:mysql://host.docker.internal:3306/golfdb
+      - spring.datasource.password=Keyin2024
+      - spring.datasource.username=root
+
+
