@@ -1,0 +1,11 @@
+package com.QAP4.golfclub;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class TournamentApiApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(TournamentApiApplication.class, args);
+    }
+}
