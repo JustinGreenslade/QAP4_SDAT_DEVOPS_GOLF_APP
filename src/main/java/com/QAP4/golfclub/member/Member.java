@@ -2,8 +2,6 @@ package com.QAP4.golfclub.member;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "member")
